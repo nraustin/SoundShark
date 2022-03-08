@@ -1,0 +1,15 @@
+.navContainer {
+    background-color: rgb(41, 88, 240);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 30px;
+    border: outset silver
+}
+
+body {
+    background-image: linear-gradient(45deg, silver, black);
+    margin: 0px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
