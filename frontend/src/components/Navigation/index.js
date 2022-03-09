@@ -24,10 +24,11 @@ function Navigation({ isLoaded }){
 
   return (
     <div className='navContainer'>
-        
+
             <NavLink exact to="/">Home</NavLink>
             {isLoaded && sessionLinks}
-            <NavLink to="/upload">Upload Song</NavLink>
+            <NavLink exact to="/songs/upload">Upload Song</NavLink>
+            <NavLink to="/songs">Tracks</NavLink>
     </div>
   );
 }
