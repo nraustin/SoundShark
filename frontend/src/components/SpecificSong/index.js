@@ -14,33 +14,32 @@ function SpecificSong() {
     const dispatch = useDispatch();
     
     const song = useSelector(state => {
-        console.log('howdy')
-        console.log(state.song)
-        console.log(state.song[songId].url)
         return state.song[songId]
     })
+    console.log(song.id)
+
 
     const handleSubmit= (e) => {
         dispatch(songActions.deleteSong(song.id))
     }
 
-      useEffect(() => {
-        (dispatch(songActions.getOneSong(song.id)))
-      }, [dispatch, song.id])
+    //   useEffect(() => {
+    //     (dispatch(songActions.getOneSong(song.id)))
+    //   }, [dispatch, song.id])
      
     return(
-        <p>
+        <>
             <div className='song-title'>
-                {song?.title}
+                {song.title}
             </div>
             <div className='audio-player'>
                 <ReactAudioPlayer className="actual-player"
-                src={song?.url}
+                src={song.url}
                 controls
                 />
                 <button onClick={handleSubmit}>Delete?</button>
             </div>
-        </p>
+        </>
     )
 }
 
