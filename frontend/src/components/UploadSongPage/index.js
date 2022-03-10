@@ -16,13 +16,14 @@ function UploadSong() {
     const [title, setTitle] = useState('');
     const [url, setUrl] = useState('');
     const [playlist, setPlaylist] = useState('');
+    const userId = sessionUser.id
 
     if (!sessionUser) return <Redirect to="/" />;
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        return dispatch(songActions.uploadSong({ title, url }))
+        return dispatch(songActions.uploadSong({ userId, title, url }))
       };
 
 
