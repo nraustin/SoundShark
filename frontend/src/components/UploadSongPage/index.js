@@ -16,9 +16,10 @@ function UploadSong() {
     const [title, setTitle] = useState('');
     const [url, setUrl] = useState('');
     const [playlist, setPlaylist] = useState('');
-    const userId = sessionUser.id
+    
 
     if (!sessionUser) return <Redirect to="/" />;
+    const userId = sessionUser.id
 
 
     const handleSubmit = (e) => {

@@ -4,6 +4,7 @@ import { csrfFetch } from './csrf';
 const GET_SONGS = 'song/GET_SONGS'
 const GET_SONG = 'song/GET_SONG'
 const NEW_SONG = 'song/NEW_SONG'
+const EDITED_SONG = 'song/EDITED_SONG'
 const DEL_SONG = 'song/DEL_SONG'
 
 
@@ -32,6 +33,13 @@ const newSong = (song) => {
 const delSong = (song) => {
     return {
         type: DEL_SONG,
+        song
+    }
+}
+
+const changeSong = (song) => {
+    return {
+        type: EDITED_SONG,
         song
     }
 }
@@ -78,8 +86,29 @@ export const uploadSong = (song) => async (dispatch) => {
 
 }
 
+export const editSong = id => async (dispatch) => {
+    const res = await csrfFetch(`/api/songs/edit/${id}`, {
+    method: 'PUT',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(id)
+})
+
+    if(res.ok) {
+        const editedSong = await res.json()
+        dispatch(changeSong(editedSong))
+        return editedSong;
+    }
+}
+
+
 export const deleteSong = id => async dispatch => {
-    const res = await csrfFetch(`/api/songs/delete/${id}`)
+    console.log('----hit-----')
+    const res = await csrfFetch(`/api/songs/delete/${id}`, {
+        method: 'DELETE',
+        body: JSON.stringify({id})
+    })
     if(res.ok){
         const songGone = await res.json();
         dispatch(delSong(songGone))
@@ -89,8 +118,6 @@ const initialState = {
     payload: []
 }
 const songReducer = (state = initialState, action) => {
-    // Object.freeze(state);
-    // let newState = Object.assign({}, state);
     let newState;
     switch (action.type) {
         case GET_SONGS:
@@ -116,9 +143,13 @@ const songReducer = (state = initialState, action) => {
             newState = Object.assign({}, state);
             newState.song = action.song;
             return newState;
+        case EDITED_SONG:
+            newState = Object.assign({}, state);
+            newState.song = action.song;
+            return newState;
         case DEL_SONG:
             newState = Object.assign({}, state);
-            newState.payload = action.payload;
+            newState.song = action.song;
             return newState;
         default:
             return state;

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, NavLink } from 'react-router-dom'
+import EditFormModal  from "../EditSongModal";
+import DeleteSongModal from "../DeleteSongModal"
 import ReactAudioPlayer from 'react-audio-player';
 import ReactPlayer from 'react-player'
 
@@ -14,18 +16,14 @@ function SpecificSong() {
     const dispatch = useDispatch();
     
     const song = useSelector(state => {
+        console.log(state.song)
         return state.song[songId]
     })
-    console.log(song.id)
+    console.log(song)
 
-
-    const handleSubmit= (e) => {
-        dispatch(songActions.deleteSong(song.id))
-    }
-
-    //   useEffect(() => {
-    //     (dispatch(songActions.getOneSong(song.id)))
-    //   }, [dispatch, song.id])
+      useEffect(() => {
+        (dispatch(songActions.getOneSong(song.id)))
+      }, [dispatch, song.id])
      
     return(
         <>
@@ -33,11 +31,16 @@ function SpecificSong() {
                 {song.title}
             </div>
             <div className='audio-player'>
-                <ReactAudioPlayer className="actual-player"
+                <div className="actual-player">
+                <ReactAudioPlayer
                 src={song.url}
                 controls
                 />
-                <button onClick={handleSubmit}>Delete?</button>
+                </div>
+                <div className="edit-and-delete">
+                <EditFormModal title={song.title} url={song.url} songId={song.id}/>
+                <DeleteSongModal songId={song.id}/>
+                </div>
             </div>
         </>
     )

@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, NavLink } from 'react-router-dom'
 import * as songActions from '../../store/song'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import './Songs.css'
 
 function SongList() {
 
@@ -27,7 +30,11 @@ function SongList() {
                     return (
                     <ul>
                         <NavLink key={song.title} to={`/songs/${song.id}`}>
-                        {song.title}
+                            <div className="songContainer">
+                                <img src='https://cdn1.iconfinder.com/data/icons/google_jfk_icons_by_carlosjj/512/music.png' className="songImg">
+                                </img>
+                                {song.title}
+                            </div>
                         </NavLink>
                     </ul>
                 )})}

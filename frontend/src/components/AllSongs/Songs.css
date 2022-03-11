@@ -1,0 +1,25 @@
+.songsButton {
+    width: 100px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+
+ul {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    height: 40px;
+    width: 100px;
+    text-align: center;
+    padding: 10px;
+}
+
+.songContainer{
+    position: relative;
+}
+
+
+
+.songImg {
+    height: 30px;
+    width: 30px;
+}
