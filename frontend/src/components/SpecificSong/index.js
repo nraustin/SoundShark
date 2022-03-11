@@ -23,7 +23,7 @@ function SpecificSong() {
 
       useEffect(() => {
         (dispatch(songActions.getOneSong(song.id)))
-      }, [dispatch, song.id])
+      }, [dispatch], song.id)
      
     return(
         <>
@@ -38,8 +38,8 @@ function SpecificSong() {
                 />
                 </div>
                 <div className="edit-and-delete">
-                <EditFormModal title={song.title} url={song.url} songId={song.id}/>
-                <DeleteSongModal songId={song.id}/>
+                <EditFormModal />
+                <DeleteSongModal songParent={song}/>
                 </div>
             </div>
         </>

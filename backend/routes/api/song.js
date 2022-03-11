@@ -40,10 +40,10 @@ router.delete("/delete/:id", asyncHandler(async(req, res) => {
 
 router.put('/edit/:id', asyncHandler(async(req, res) => {
     const { id } = req.params;
-    const { userId, title, url } = req.body;
-    const song = await Song.create({ userId, title, url })
+    const { userId, newTitle, newUrl } = req.body;
+    console.log(req.body)
 
-    const thatSong = await Song.findByPk(song.id, {
+    const thatSong = await Song.findByPk(id, {
         include: {
             model: User
         }

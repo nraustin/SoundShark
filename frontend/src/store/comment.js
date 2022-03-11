@@ -37,7 +37,7 @@ const delComment = (comment) => {
 
 export const nowGetComments = (id) => async dispatch => {
     console.log('HERE')
-    const res = await csrfFetch(`/api/songs/${id}`)
+    const res = await csrfFetch(`/api/comments/${id}`)
     .then(response => response.json())
     .then(comment => {
         console.log('payload', comment)

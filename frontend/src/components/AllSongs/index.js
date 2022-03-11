@@ -24,21 +24,19 @@ function SongList() {
 
 
     return (
-        <>
+        <div className='songsContainer'>
                 {songs?.map(song => {
                     console.log(song);
                     return (
-                    <ul>
-                        <NavLink key={song.title} to={`/songs/${song.id}`}>
-                            <div className="songContainer">
+                        <NavLink key={song.title} to={`/songs/${song.id}`} className='songContainer'>
+                            <div>
                                 <img src='https://cdn1.iconfinder.com/data/icons/google_jfk_icons_by_carlosjj/512/music.png' className="songImg">
                                 </img>
                                 {song.title}
                             </div>
                         </NavLink>
-                    </ul>
                 )})}
-        </>
+        </div>
     )
 }
 

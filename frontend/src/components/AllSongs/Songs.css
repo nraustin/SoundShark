@@ -3,18 +3,19 @@
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 }
 
-ul {
+.songsContainer {
     display: flex;
-    justify-content: center;
-    margin: 0 auto;
-    height: 40px;
-    width: 100px;
-    text-align: center;
-    padding: 10px;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    height: 100vh;
 }
 
 .songContainer{
-    position: relative;
+    text-align: center;
+    height: 100px;
+    width: 100px;
+    padding: 50px
+    
 }
 
 

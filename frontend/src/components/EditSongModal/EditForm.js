@@ -4,23 +4,28 @@ import * as songActions from '../../store/song'
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useParams } from 'react-router-dom';
 
-function EditForm({ url, title, songId}) {
-    const dispatch = useDispatch;
-    const [newUrl, setNewUrl] = useState(url);
-    const [newTitle, setNewTitle] = useState(title)
+function EditForm() {
+    
+    const { songId } = useParams();
+
+    const song = useSelector(state => {
+        console.log(state.song)
+        return state.song[songId]
+    })
+
+    const [newUrl, setNewUrl] = useState(song.url);
+    const [newTitle, setNewTitle] = useState(song.title)
+    console.log(song.title)
+
     const sessionUser = useSelector(state => state.session.user)
     const userId = sessionUser.id
-    // const { songId } = useParams();
 
-    // const song = useSelector(state => {
-    //     console.log(state.song)
-    //     return state.song[songId]
-    // })
-    // console.log(song)
+    const dispatch = useDispatch();
 
     const handleEdit = async (e) => {
         e.preventDefault();
         const newSong = { newUrl, newTitle, userId, songId }
+        console.log(newSong)
         dispatch(songActions.editSong(newSong))
     }
 

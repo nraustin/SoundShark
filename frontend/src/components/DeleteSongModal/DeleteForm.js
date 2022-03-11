@@ -4,18 +4,21 @@ import * as songActions from '../../store/song'
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useParams } from 'react-router-dom';
 
-function DeleteForm({songId}) {
-    const dispatch = useDispatch;
-    // const { songId } = useParams();
+function DeleteForm({songParent}) {
+    const dispatch = useDispatch();
+    
+    const { songId } = useParams();
 
-    // const song = useSelector(state => {
-    //     console.log(state.song)
-    //     return state.song[songId]
-    // })
-    // console.log(song)
+    const song = useSelector(state => {
+        console.log(state.song)
+        return state.song[songId]
+    })
+    console.log(song)
+
+    console.log(songId)
 
 
-    const handleDelete= (e) => {
+    const handleDelete = async (e) => {
         dispatch(songActions.deleteSong(songId))
     }
 
