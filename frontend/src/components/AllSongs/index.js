@@ -29,10 +29,12 @@ function SongList() {
                     console.log(song);
                     return (
                         <NavLink key={song.title} to={`/songs/${song.id}`} className='songContainer'>
-                            <div>
+                            <div className="image-and-title">
                                 <img src='https://cdn1.iconfinder.com/data/icons/google_jfk_icons_by_carlosjj/512/music.png' className="songImg">
                                 </img>
+                                <div className="title">
                                 {song.title}
+                                </div>
                             </div>
                         </NavLink>
                 )})}

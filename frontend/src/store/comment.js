@@ -20,7 +20,7 @@ const addComment = (comment) => {
     }
 }
 
-const editComment = (comment) => {
+const updateComment = (comment) => {
     return {
         type: EDIT_COMMENT,
         comment
@@ -35,26 +35,29 @@ const delComment = (comment) => {
 }
 
 
-export const nowGetComments = (id) => async dispatch => {
+export const nowGetComments = (songId) => async dispatch => {
     console.log('HERE')
-    const res = await csrfFetch(`/api/comments/${id}`)
-    .then(response => response.json())
-    .then(comment => {
-        console.log('payload', comment)
-        dispatch(getComments(comment))
-    })
+    const res = await csrfFetch(`/api/comments/${songId}`)
+    if(res.ok){
+        const comments = await res.json();
+        dispatch(getComments(comments))
+        return comments;
+    }
 }
 
 
-const initialState = {
-    payload: []
-}
+const initialState = {}
 
 
 const commentReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case GET_COMMENTS:
+            newState = {...state}
+            action.comment.forEach(comment => {
+                newState[comment.id] = comment;
+            });
+            return newState;
     default:
         return state;
     }

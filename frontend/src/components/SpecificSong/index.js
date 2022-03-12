@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, NavLink } from 'react-router-dom'
 import EditFormModal  from "../EditSongModal";
 import DeleteSongModal from "../DeleteSongModal"
+import Comments from '../Comments'
 import ReactAudioPlayer from 'react-audio-player';
-import ReactPlayer from 'react-player'
 
 import * as songActions from '../../store/song'
-import H5AudioPlayer from "react-h5-audio-player";
+import * as commentActions from '../../store/comment'
+
+
 import './SpecificSong.css'
 
 function SpecificSong() {
@@ -15,25 +17,27 @@ function SpecificSong() {
     const { songId } = useParams();
     const dispatch = useDispatch();
     
-    const song = useSelector(state => {
-        console.log(state.song)
-        return state.song[songId]
-    })
+    const song = useSelector(state => state.song[songId])
+    const commentObject = useSelector(state => state.comment)
+    const comments = Object.values(commentObject)
     console.log(song)
 
       useEffect(() => {
-        (dispatch(songActions.getOneSong(song.id)))
-      }, [dispatch], song.id)
+        dispatch(songActions.getOneSong(songId))
+        dispatch(commentActions.nowGetComments(songId))
+      }, [dispatch, songId])
+
+      console.log(comments[songId])
      
     return(
         <>
             <div className='song-title'>
-                {song.title}
+                {song?.title}
             </div>
             <div className='audio-player'>
                 <div className="actual-player">
                 <ReactAudioPlayer
-                src={song.url}
+                src={song?.url}
                 controls
                 />
                 </div>
@@ -41,6 +45,13 @@ function SpecificSong() {
                 <EditFormModal />
                 <DeleteSongModal songParent={song}/>
                 </div>
+            </div>
+            <div>
+              {comments?.map(comment => {
+                  <div className='specificComment'>
+                      {comment.body}
+                    </div>  
+              })}  
             </div>
         </>
     )

@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Alatsi');
+@import url('https://fonts.googleapis.com/css?family=Play');
+
+
 .navContainer {
     background-image: linear-gradient(rgb(0, 197, 197), rgb(138, 138, 138));
     display: flex;
@@ -40,10 +44,11 @@ body {
 
 .home-title {
     font-family: 'Altasi' ;
-    padding-left: 20px;
-    padding-top: 15px;
-    font-family: 'Alatsi';
+    padding-left: 10px;
+    padding-top: 6px;
+    font-family: 'Play';
     text-decoration: none;
+    font-size: 30px;
 }
 
 .tracks-link-div {
@@ -57,6 +62,6 @@ a {
 }
 
 a:hover {
-    color: blueviolet;
+    color: rgb(76, 43, 226);
     text-shadow: 2px 2px 6px;
 }
