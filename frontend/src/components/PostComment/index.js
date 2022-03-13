@@ -17,9 +17,13 @@ function CommentPost() {
 
 
     const handleCommentSubmit = e => {
-        e.prevent.default();
-        const newComment = {comment:newComment, songId: songId, userId: sessionUser.id}
-        dispatch(commentActions.nowGetComments(addComment));
+        e.preventDefault();
+        const newComment = {body:addComment, songId: songId, userId: sessionUser.id}
+        let res = dispatch(commentActions.nowAddComment(newComment));
+
+        if (res) {
+            history.push(`/songs/${songId}`)
+        }
     }
 
 return (

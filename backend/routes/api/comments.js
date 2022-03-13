@@ -32,8 +32,10 @@ router.get("/:songId", asyncHandler(async(req, res) => {
 }))
 
 router.post("/", asyncHandler(async(req, res) => {
+    console.log('-----------here----------')
+    console.log(req.body)
     const comment = await Comment.create(req.body)
-    
+
     return res.json(comment);
 }))
 

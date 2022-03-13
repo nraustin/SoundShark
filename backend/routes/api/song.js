@@ -33,10 +33,19 @@ router.post("/upload", asyncHandler(async(req, res) => {
 router.delete("/delete/:id", asyncHandler(async(req, res) => {
     const { id } = req.params;
     console.log('----about-to-delete----')
-    const song = await Song.findByPk(id);
+    const song = await Song.findByPk(id)
+
+    // const comments = await Comment.findAll({
+    //         where: { 
+    //             id: song
+    //     },
+    //     include: {
+    //         model: User
+    //     }})
+    // await comments.destroy();
     await song.destroy();
 
-    return res.json(song)
+    return res.json(song, comments)
 }))
 
 router.put('/edit/:id', asyncHandler(async(req, res) => {

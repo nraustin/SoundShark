@@ -29,7 +29,7 @@ function SongList() {
                 {songs?.map(song => {
                     console.log(song);
                     return (
-                        <NavLink key={song.title} to={`/songs/${song.id}`} className='songContainer'>
+                        <NavLink key={song.id} to={`/songs/${song.id}`} className='songContainer'>
                             <div className="image-and-title">
                                 <img src='https://cdn1.iconfinder.com/data/icons/google_jfk_icons_by_carlosjj/512/music.png' className="songImg">
                                 </img>

@@ -41,6 +41,7 @@ export const nowGetComments = (songId) => async dispatch => {
     if(res.ok){
         const comments = await res.json();
         dispatch(getComments(comments))
+        return comments;
     }
 }
 
@@ -48,31 +49,30 @@ export const nowAddComment = (comment) => async dispatch => {
     const res = await csrfFetch('/api/comments', {
         method: "POST",
         headers: {
-        "Content_Type": "application/json"
+        "Content_Type":"application/json"
          },
         body: JSON.stringify(comment)
     })
     const newComment = await res.json()
     dispatch(addComment(newComment))
+    return newComment;
 }
 
 
 const initialState = {
-    comments: []
+    
 }
 
 
 const commentReducer = (state = initialState, action) => {
-    let newState;
+    let newState = {...state};
     switch (action.type) {
         case GET_COMMENTS:
-            newState = {...state}
-            action.comments.forEach((comment) => (newState[comment.id] = comment));
+            action.comments?.forEach((comment) => (newState[comment.id] = comment));
             return newState
-
         case ADD_COMMENT:
-            newState = {...state}
-            newState[action.comment?.id] = action.comment
+            newState = Object.assign({}, state);
+            newState.comment = action.comment;
             return newState
     default:
         return state;

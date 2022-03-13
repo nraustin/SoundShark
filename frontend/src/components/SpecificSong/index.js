@@ -24,6 +24,7 @@ function SpecificSong() {
     const comments = Object.values(commentObject)
 
     console.log(commentObject)
+    console.log(comments)
     console.log(sessionUser)
 
       useEffect(() => {
@@ -32,7 +33,7 @@ function SpecificSong() {
       }, [dispatch, songId])
      
     return(
-        <>
+        <div>
             <div className='song-title'>
                 {song?.title}
             </div>
@@ -45,30 +46,40 @@ function SpecificSong() {
                 </div>
                 <div className="edit-and-delete">
                 <EditFormModal />
-                <DeleteSongModal songParent={song}/>
+                <DeleteSongModal />
                 </div>
             </div>
             <div className="commentsContainer">
                 <div className="commentContainer">
                     <CommentPost/>
                     {comments?.map(comment => {
-                        return (
+                        return (  
                             <>
-                            {comment.songId == songId ?
+                            {songId == comment.songId ?
                                 <div className='specificComment'>
+                                    
+                                      <>
                                         <div className="commentUsername">
-                                            {sessionUser.username}
+                                            {sessionUser?.username}
+                                            
+                                            {sessionUser.id == comment.userId ? 
+                                                <>
+                                                    <button type='button'>Edit</button>
+                                                    <button type='button'>Delete</button> 
+
+                                                </> : null}
+                                            
                                         </div>
                                         <div className="commentBody">
-                                            {comment.body}
+                                            {comment?.body}
                                         </div> 
-                                </div>
-                            : null }
+                                        </> 
+                                </div> : null }
                             </>
                     )})}   
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 
