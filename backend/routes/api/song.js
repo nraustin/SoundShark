@@ -3,6 +3,7 @@ const asyncHandler = require('express-async-handler');
 const router = express.Router();
 
 const { User, Song, Comment } = require("../../db/models");
+const comment = require('../../db/models/comment');
 
 router.get("/", asyncHandler(async(req, res) => {
     console.log('IN THE DB');
@@ -62,14 +63,16 @@ router.get('/:id', asyncHandler(async(req, res) => {
             model: User
         }
     })
-    const commments = await Comment.findAll({
-        where: { 
-            id
-    },
-    include: {
-        model: User
-    }})
-    return res.json(song);
+    // })
+    // const comments = await Comment.findAll({
+    //     where: { 
+    //         songId: id
+    // },
+    // include: {
+    //     model: User
+    // }})
+    // console.log('comments', comments)
+    res.json(song)
 }))
 
 module.exports = router;

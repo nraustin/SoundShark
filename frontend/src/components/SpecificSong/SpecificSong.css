@@ -10,6 +10,7 @@
    align-items: center;
    position: relative;
    height: 100px;
+   color: black;
 }
 
 .actual-player {
@@ -19,4 +20,50 @@
 .edit-and-delete {
     position: absolute;
     margin-top: 50px
+}
+
+
+.commentsContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.commentContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 300px;
+    box-shadow: 3px 3px 3px black;
+}
+
+.postComment{
+    
+    justify-content: center;
+    width: 300px;
+    height: 100px;
+    resize: none;
+    box-shadow: 3px 3px 3px black;
+}
+
+.commentBody {
+    border: grey solid;
+    border-radius: 4px 4px 4px 4px;
+    padding: 10px;
+    font-family: 'Alatsi';
+    color: silver;
+    font-size: 13px;
+    background-color: black;
+}
+
+.commentUsername {
+    padding-top: 10px;
+    padding-left: 5px;
+    padding-bottom: 2px;
+    font-family: 'Exo';
+    font-size: 11px;
+    color: gray;
+}
+
+.specificComment {
+    padding: 4px;
 }

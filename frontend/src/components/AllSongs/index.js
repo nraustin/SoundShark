@@ -24,6 +24,7 @@ function SongList() {
 
 
     return (
+        <>
         <div className='songsContainer'>
                 {songs?.map(song => {
                     console.log(song);
@@ -39,6 +40,9 @@ function SongList() {
                         </NavLink>
                 )})}
         </div>
+        <div className="just-for-space">
+        </div>
+        </>
     )
 }
 
