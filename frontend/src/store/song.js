@@ -8,11 +8,10 @@ const EDITED_SONG = 'song/EDITED_SONG'
 const DEL_SONG = 'song/DEL_SONG'
 
 
-const getSongs = (payload) => {
-    console.log(payload);
+const getSongs = (songs) => {
     return {
         type: GET_SONGS,
-        payload
+        songs
     }
 }
 
@@ -26,7 +25,7 @@ const getSong = (song) => {
 const newSong = (song) => {
     return {
         type: NEW_SONG,
-        payload: song
+        song
     }
 }
 
@@ -47,11 +46,16 @@ const changeSong = (song) => {
 export const getAllSongs = () => async dispatch => {
     console.log('HERE')
     const res = await csrfFetch(`/api/songs`)
-    .then(response => response.json())
-    .then(payload => {
-        console.log('payload', payload)
-        dispatch(getSongs(payload))
-    })
+    if(res.ok) {
+        const data = await res.json();
+        dispatch(getSongs(data));
+        return data;
+    }
+    // .then(response => response.json())
+    // .then(songs => {
+    //     console.log('payload', songs)
+    //     dispatch(getSongs(songs))
+    // })
 }
 
 export const getOneSong = id => async dispatch => {
@@ -116,38 +120,26 @@ export const deleteSong = id => async dispatch => {
     }
 }
 const initialState = {
-    payload: []
 }
 const songReducer = (state = initialState, action) => {
     let newState = {...state};
     switch (action.type) {
         case GET_SONGS:
-            const allSongs = {};
-            action.payload.forEach(song => {
-                allSongs[song.id] = song;
-            });
-            console.log(action.payload)
-            return {
-                ...allSongs,
-                ...state,
-                payload: action.payload,
-            }
+            action.songs.forEach((song) => (newState[song.id] = song));
+            return newState;
         case GET_SONG:
-            return {
-                ...state,
-                [action.song.id]: {
-                  ...state[action.song.id],
-                  ...action.song,
-                },
-              };
+            newState[action.song?.id] = action.song;
+            return newState;
+
         case NEW_SONG:
-            newState = Object.assign({}, state);
-            newState.song = action.song;
+            newState[action.song?.id] = action.song;
             return newState;
+
         case EDITED_SONG:
-            newState = Object.assign({}, state);
-            newState.song = action.song;
+            console.log(state)
+            newState[action.song?.id] = action.song;
             return newState;
+
         case DEL_SONG:
             // newState = {...state}
             delete newState[action.song.id]

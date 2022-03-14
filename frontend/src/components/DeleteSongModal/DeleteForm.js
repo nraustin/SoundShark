@@ -30,7 +30,7 @@ function DeleteForm({songParent}) {
 
     return (
         <div>
-            <button to='/songs' onClick={handleDelete} type='submit' className='deleteTrackModalButton'>Delete Track</button>
+            <button onClick={handleDelete} type='submit' className='deleteTrackModalButton'>Delete Track</button>
         </div>
       )
     }

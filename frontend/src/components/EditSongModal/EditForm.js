@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import * as songActions from '../../store/song'
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, useParams } from 'react-router-dom';
+import { Redirect, useParams, useHistory } from 'react-router-dom';
 
-function EditForm() {
+function EditForm({close}) {
     
     const { songId } = useParams();
+    const history = useHistory();
 
     const song = useSelector(state => {
         console.log(state.song)
@@ -26,7 +27,10 @@ function EditForm() {
         e.preventDefault();
         const newSong = { newUrl, newTitle, userId, songId }
         console.log(newSong)
-        dispatch(songActions.editSong(newSong))
+
+        let res = dispatch(songActions.editSong(newSong))
+        close();
+        
     }
 
     return (

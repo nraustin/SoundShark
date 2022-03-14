@@ -24,9 +24,7 @@ router.post("/upload", asyncHandler(async(req, res) => {
             model: User
         }
     })
-    return res.json({
-        thatSong
-    })
+    return res.json(thatSong)
 
 }))
 
@@ -59,9 +57,7 @@ router.put('/edit/:id', asyncHandler(async(req, res) => {
         }
     })
     thatSong.update({url: newUrl, title: newTitle, userId })
-    return res.json({
-        thatSong
-    })
+    return res.json(thatSong)
 }))
 
 router.get('/:id', asyncHandler(async(req, res) => {

@@ -46,7 +46,8 @@ function Navigation({ isLoaded }){
               </NavLink>
       </div>
       <div className='footer'>
-
+      </div>
+      <div className='space'>
       </div>
     </div>
   );

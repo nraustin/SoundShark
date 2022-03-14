@@ -13,7 +13,7 @@ function SongList() {
 
     const songsObj = useSelector(state => {
         console.log(state.song)
-        return state.song.payload
+        return state.song
         // .map(songId => state.song[songId])
       });
     console.log(songsObj);
@@ -21,7 +21,7 @@ function SongList() {
 
     useEffect(() => {
         (dispatch(songActions.getAllSongs()))
-    }, [dispatch, songsObj[songId]])
+    }, [dispatch, songsObj[songId], songsObj[songId]?.title])
 
 
     return (
@@ -35,7 +35,7 @@ function SongList() {
                                 <img src='https://cdn1.iconfinder.com/data/icons/google_jfk_icons_by_carlosjj/512/music.png' className="songImg">
                                 </img>
                                 <div className="title">
-                                {song.title}
+                                {song?.title}
                                 </div>
                             </div>
                         </NavLink>
