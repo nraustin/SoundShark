@@ -40,13 +40,13 @@ router.post("/", asyncHandler(async(req, res) => {
     return res.json(comment);
 }))
 
-router.put('/:songId/:id', asyncHandler(async(req, res) => {
+router.put('/:songId/:commentId', asyncHandler(async(req, res) => {
     const commentId = parseInt(req.params.commentId)
     const { comment } = req.body
     const newComment = await Comment.findByPk(commentId)
         if (newComment) {
             await newComment.update({
-                comment: comment
+                body: comment
             })
         }
         return res.json(newComment);
