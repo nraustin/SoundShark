@@ -29,8 +29,15 @@ function DeleteForm({songParent}) {
 
 
     return (
-        <div>
+        <div className='deleteModalContainer'>
+            <div className='thisTop'>
+            <label>
+             Are you sure you want to delete?   
+            </label>
+            </div>
+            <div className='thisBottom'>
             <button onClick={handleDelete} type='submit' className='deleteTrackModalButton'>Delete Track</button>
+            </div>
         </div>
       )
     }

@@ -67,7 +67,6 @@ export const nowAddComment = (comment) => async dispatch => {
     })
     const newComment = await res.json()
     dispatch(addComment(newComment))
-    // return newComment;
 }
 
 export const nowEditComment = (comment) => async dispatch => {

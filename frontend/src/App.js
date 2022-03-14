@@ -35,6 +35,9 @@ function App() {
           <Route exact path="/songs/upload">
             <UploadSong />
           </Route>
+          <Route path="/songs/:songId/:commentId">
+            <SpecificSong/>
+          </Route>
           <Route path="/songs/:songId">
             <SpecificSong />
           </Route>

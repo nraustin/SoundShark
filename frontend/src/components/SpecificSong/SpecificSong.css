@@ -33,7 +33,7 @@
     padding: 30px;
     padding-top: 150px;
     flex-direction: row;
-    width: 200px;
+    width: 175px;
 }
 
 
@@ -67,6 +67,36 @@
     cursor: pointer;
     background-color: rgb(255, 0, 0);
     color: rgb(65, 2, 2);
+}
+
+.deleteComment{
+    border: none;
+    background-color: rgb(124, 0, 0);
+    color: silver;
+    border-radius: 3px 3px 3px 3px;
+    font-family: 'Exo';
+    font-weight: bold;
+}
+
+.deleteComment:hover{
+    cursor: pointer;
+    background-color: rgb(255, 0, 0);
+    color: rgb(65, 2, 2);
+}
+
+.editCommentButton{
+    border: none;
+    background-color: rgb(192, 192, 192);
+    color: rgb(20, 20, 20);
+    border-radius: 3px 3px 3px 3px;
+    font-family: 'Exo';
+    font-weight: bold;
+}
+
+.editCommentButton:hover{
+    cursor: pointer;
+    background-color: rgb(115, 192, 255);
+    color: rgb(22, 22, 22);
 }
 
 .buttonArrangement{

@@ -4,6 +4,7 @@ import { useParams, NavLink, Link, useHistory } from 'react-router-dom'
 import EditFormModal  from "../EditSongModal";
 import DeleteSongModal from "../DeleteSongModal"
 import CommentPost from '../PostComment'
+import EditComment from '../EditComment'
 import ReactAudioPlayer from 'react-audio-player';
 import Waveform from "../WaveFormerC";
 
@@ -24,6 +25,8 @@ function SpecificSong() {
     const commentObject = useSelector((state) => state.comment)
     const sessionUser = useSelector(state => state.session.user);
     const userObject = useSelector((state) => state.userST)
+
+    const [editForm, setEditForm] = useState(false)
 
     const users = Object.values(userObject)
     const comments = Object.values(commentObject)
@@ -92,9 +95,9 @@ function SpecificSong() {
                                                 <div className="commentUsername">
                                                     {getUsernames(comment?.userId)}
                                                     
-                                                    {sessionUser?.id == comment.userId ? 
+                                                    {sessionUser?.id == comment?.userId ? 
                                                         <>
-                                                            <button type='button'>Edit</button>
+                                                            <EditComment commentS={{comment}}/>
                                                             <button onClick={() => handleCommentDelete(comment.id)} className="deleteComment">Delete</button>
 
                                                         </> : null}

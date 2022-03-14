@@ -1,57 +1,14 @@
-/* import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { updateComment } from '../../store/comments';
-import { useHistory, useParams } from 'react-router-dom';
-import { nowEditComment } from '../../store/comment';
-
-function EditComment() {
-
-    const dispatch = useDispatch();
-    const history = useHistory();
-
-    const song = useSelector(state => state.illusionState);
-    const sessionUser = useSelector(state => state.session.user);
-    const comment = useSelector(state => state.comment);
-
-
-    const [editComment, setEditComment] = useState(comment.comment);
-    const {songId, commentId} = useParams();
-
-    const handleCommentEdit = e => {
-        e.preventDefault();
-
-        const updatedComment = {id: commentId, userId: sessionUser.id, songId: song[songId].id, comment: comment ? editComment : null
-        }
-
-        let res = dispatch(nowEditComment(updatedComment));
-
-        if (res) {
-            history.push(`/songs/${songId}`)
-        }
-    }
-
-    const onClick = () => {
-        history.push(`/songs/${songId}`)
-    }
-
-
-    return (
-        <div className="postContainer">
-            <form className="postInput" onSubmit={handleCommentEdit}>
-                <textarea
-                    value={editComment}
-                    onChange={(e) => setEditComment(e.target.value)}
-                    rows="4"
-                    placeholder="New Comment"
-                    className="descriptionNewComment"
-                ></textarea>
-                <div className="postButtonContainer">
-                    <button className="postButton" type="submit">Submit</button>
-                    <div onClick={onClick} className="cancelButton">Cancel</div>
-                </div>
-            </form>
-        </div>
-    );
+.editCommentButton{
+    border: none;
+    background-color: rgb(192, 192, 192);
+    color: rgb(20, 20, 20);
+    border-radius: 3px 3px 3px 3px;
+    font-family: 'Exo';
+    font-weight: bold;
 }
 
-export default EditComment; */
+.editComment:hover{
+    cursor: pointer;
+    background-color: rgb(115, 192, 255);
+    color: rgb(22, 22, 22);
+}

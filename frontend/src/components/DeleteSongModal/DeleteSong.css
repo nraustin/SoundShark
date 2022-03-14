@@ -1,3 +1,25 @@
 .deleteTrackButton{
     padding: 10px;
 }
+
+.deleteModalContainer{
+    display: flex;
+    justify-content: center;
+}
+
+.deleteTrackModalButton{
+
+    padding-left: 20px;
+    width: 200px;
+}
+
+.thisBottom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#modal-content{
+    display: flex;
+    justify-content: center;
+}
