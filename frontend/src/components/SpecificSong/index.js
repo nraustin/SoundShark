@@ -5,6 +5,7 @@ import EditFormModal  from "../EditSongModal";
 import DeleteSongModal from "../DeleteSongModal"
 import CommentPost from '../PostComment'
 import ReactAudioPlayer from 'react-audio-player';
+import Waveform from "../WaveFormerC";
 
 import * as songActions from '../../store/song'
 import * as commentActions from '../../store/comment'

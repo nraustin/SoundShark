@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-      "heroku-postbuild": "npm run build --prefix frontend",
-      "install": "npm --prefix backend install backend && npm --prefix frontend install frontend",
-      "sequelize": "npm run --prefix backend sequelize",
-      "sequelize-cli": "npm run --prefix backend sequelize-cli",
-      "start": "npm start --prefix backend"
-    },
+    "heroku-postbuild": "npm run build --prefix frontend",
+    "install": "npm --prefix backend install backend && npm --prefix frontend install frontend",
+    "sequelize": "npm run --prefix backend sequelize",
+    "sequelize-cli": "npm run --prefix backend sequelize-cli",
+    "start": "npm start --prefix backend"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nraustin/Solo-Project.git"
@@ -20,5 +20,6 @@
   "bugs": {
     "url": "https://github.com/nraustin/Solo-Project/issues"
   },
-  "homepage": "https://github.com/nraustin/Solo-Project#readme"
+  "homepage": "https://github.com/nraustin/Solo-Project#readme",
+  "dependencies": {}
 }

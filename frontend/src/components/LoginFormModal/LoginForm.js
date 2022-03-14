@@ -60,8 +60,10 @@ function LoginForm() {
           required
         />
       </label>
-      <button type="submit">Log In</button>
-      <button type="submit" onClick={handleSubmitDemo}>Demo User</button>
+      <div className='loginModalButtons'>
+        <button type="submit" className='modalLoginButton'>Log In</button>
+        <button type="submit" onClick={handleSubmitDemo} className='modalDemoButton'>Demo User</button>
+      </div>
     </form>
   );
 }

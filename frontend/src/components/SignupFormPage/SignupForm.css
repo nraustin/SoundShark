@@ -1,0 +1,64 @@
+.signupModalContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+label{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: silver;
+    font-family: 'Alatsi';
+    padding-bottom: 10px;
+}
+
+#modal-content{
+    padding:10px;
+    padding-bottom: 30px;
+    background-image: linear-gradient(45deg, rgb(51, 51, 51), rgb(29, 29, 29));
+    box-shadow: 3px 3px 3px 3px rgb(0, 0, 0);
+    border-radius: 4px 4px 4px;
+}
+
+.actualSignupButton{
+        padding-right: 10px;
+        border: none;
+        background-color: rgb(202, 202, 202);
+        color: rgb(0, 0, 0);
+        border-radius: 3px 3px 3px 3px;
+        font-family: 'Exo';
+        font-weight: bold;
+        height: 22px;
+        text-align: center;
+}
+    
+.actualSignupButton:hover {
+        cursor: pointer;
+        background-color: rgb(255, 255, 255);
+        color: rgb(8, 1, 114);
+}
+
+
+.modalSignupPosition{
+    display: flex;
+    justify-content: center;
+}
+.modalSignupButton{
+    padding-right: 10px;
+    border: none;
+    background-color: rgb(0, 83, 94);
+    color: silver;
+    border-radius: 3px 3px 3px 3px;
+    font-family: 'Exo';
+    font-weight: bold;
+    height: 23px;
+    text-align: center;
+    width: 80px;
+}
+
+.modalSignupButton:hover {
+    cursor: pointer;
+    background-color: rgb(0, 199, 206);
+    color: rgb(1, 54, 97);
+
+}

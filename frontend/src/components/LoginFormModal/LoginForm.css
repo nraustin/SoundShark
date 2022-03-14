@@ -1,0 +1,60 @@
+.actualLoginButton{
+        padding-right: 10px;
+        border: none;
+        background-color: rgb(14, 0, 94);
+        color: silver;
+        border-radius: 3px 3px 3px 3px;
+        font-family: 'Exo';
+        font-weight: bold;
+        height: 23px;
+        text-align: center;
+}
+    
+.actualLoginButton:hover {
+        cursor: pointer;
+        background-color: rgb(0, 21, 206);
+        color: rgb(8, 1, 114);
+}
+
+.loginModalButtons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.modalLoginButton{
+    padding-right: 10px;
+        border: none;
+        background-color: rgb(14, 0, 94);
+        color: silver;
+        border-radius: 3px 3px 3px 3px;
+        font-family: 'Exo';
+        font-weight: bold;
+        height: 23px;
+        text-align: center;
+}
+    
+.modalLoginButton:hover {
+        cursor: pointer;
+        background-color: rgb(0, 21, 206);
+        color: rgb(8, 1, 114);
+
+}
+
+.modalDemoButton{
+    padding-right: 10px;
+    border: none;
+    background-color: rgb(0, 83, 94);
+    color: silver;
+    border-radius: 3px 3px 3px 3px;
+    font-family: 'Exo';
+    font-weight: bold;
+    height: 23px;
+    text-align: center;
+}
+
+.modalDemoButton:hover {
+    cursor: pointer;
+    background-color: rgb(0, 199, 206);
+    color: rgb(1, 54, 97);
+
+}

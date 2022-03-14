@@ -19,6 +19,60 @@ body {
     background-attachment: fixed;
 }
 
+.backgroundSplash{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    background-image: 'https://free4kwallpapers.com/uploads/originals/2020/07/29/black-ocean-wallpaper.jpg';
+}
+
+img{
+    display: block;
+}
+h1{
+    text-align: center;
+}
+h3{
+    text-align: center;
+}
+.welcomeContainer{
+    height: 300px;
+    padding-top: 50px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-family: 'Play';
+
+}
+
+.splashButtonsContainer{
+    display: flex;
+    justify-content: center;
+}
+
+/* .splashLoginButton{
+    padding-right: 10px;
+    border: none;
+    background-color: rgb(14, 0, 94);
+    color: silver;
+    border-radius: 3px 3px 3px 3px;
+    font-family: 'Exo';
+    font-weight: bold;
+}
+
+.splashLoginButton:hover {
+    cursor: pointer;
+    background-color: rgb(0, 21, 206);
+    color: rgb(8, 1, 114);
+} */
+
+.splashSignupButton{
+    padding-left: 10px;
+}
+
 .footer {
     background-image: linear-gradient(rgb(0, 197, 197), rgb(138, 138, 138));
     display: flex;
