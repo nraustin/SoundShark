@@ -37,7 +37,7 @@ function EditForm() {
             <label>New Track URL
                 <input type='text' value={newUrl} onChange={(e) => setNewUrl(e.target.value)} required />
             </label>
-            <button type='submit'>Update Track</button>
+            <button type='submit' className='editSongModalButton'>Update Track</button>
         </form>
       )
     }

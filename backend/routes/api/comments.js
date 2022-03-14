@@ -7,6 +7,7 @@ const router = express.Router();
 
 
 const { User, Song, Comment } = require("../../db/models");
+const { route } = require('.');
 
 const commentValidator = [
     check('comment')
@@ -37,6 +38,28 @@ router.post("/", asyncHandler(async(req, res) => {
     const comment = await Comment.create(req.body)
 
     return res.json(comment);
+}))
+
+router.put('/:songId/:id', asyncHandler(async(req, res) => {
+    const commentId = parseInt(req.params.commentId)
+    const { comment } = req.body
+    const newComment = await Comment.findByPk(commentId)
+        if (newComment) {
+            await newComment.update({
+                comment: comment
+            })
+        }
+        return res.json(newComment);
+}))
+
+router.delete('/delete/:id', asyncHandler(async(req, res) => {
+
+    const { id } = req.params;
+    const comment = await Comment.findByPk(id)
+
+    await comment.destroy();
+    return res.json(comment);
+
 }))
 
 

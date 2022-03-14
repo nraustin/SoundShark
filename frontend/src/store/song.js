@@ -118,7 +118,7 @@ const initialState = {
     payload: []
 }
 const songReducer = (state = initialState, action) => {
-    let newState;
+    let newState = {...state};
     switch (action.type) {
         case GET_SONGS:
             const allSongs = {};
@@ -148,9 +148,8 @@ const songReducer = (state = initialState, action) => {
             newState.song = action.song;
             return newState;
         case DEL_SONG:
-            newState = Object.assign({}, state);
-            newState.song = action.song;
-            return newState;
+            delete newState[action.song.id]
+            return newState
         default:
             return state;
     }

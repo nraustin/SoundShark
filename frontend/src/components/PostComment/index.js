@@ -21,9 +21,9 @@ function CommentPost() {
         const newComment = {body:addComment, songId: songId, userId: sessionUser.id}
         let res = dispatch(commentActions.nowAddComment(newComment));
 
-        if (res) {
-            history.push(`/songs/${songId}`)
-        }
+        // if (res) {
+        //     history.push(`/songs/${songId}`)
+        // }
     }
 
 return (
@@ -32,13 +32,13 @@ return (
                 <form className="newCommentForm" onSubmit={handleCommentSubmit}>
                     <textarea value={addComment} onChange={(e) => setAddComment(e.target.value)} 
                     placeholder="Add your thoughts."
-                    rows='4'
+                    rows='3'
                     className="commentInput"
                     required
                     >
                     </textarea>
-                    <div>
-                        <button className="submitButton" type='submit'>Add Comment</button>
+                    <div className="addCommentButtonContainer">
+                        <button className="addCommentButton" type='submit'>Add Comment</button>
                     </div>
                 </form>
             </div>

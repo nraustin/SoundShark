@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, NavLink } from 'react-router-dom'
+import { useParams, NavLink, Link, useHistory } from 'react-router-dom'
 import EditFormModal  from "../EditSongModal";
 import DeleteSongModal from "../DeleteSongModal"
 import CommentPost from '../PostComment'
@@ -17,6 +17,7 @@ function SpecificSong() {
 
     const { songId } = useParams();
     const dispatch = useDispatch();
+    const history = useHistory();
     
     const song = useSelector((state) => state.song[songId])
     const commentObject = useSelector((state) => state.comment)
@@ -31,9 +32,17 @@ function SpecificSong() {
         dispatch(songActions.getOneSong(songId))
         dispatch(commentActions.nowGetComments(songId))
       }, [dispatch, songId])
+
+      const handleCommentDelete = async(id) => {
+        let res = dispatch(commentActions.nowDeleteComment(id))
+
+        // if (res) {
+        //     history.push(`/songs/${songId}`)
+        // }
+     }
      
     return(
-        <div>
+        <div className="content">
             <div className='song-title'>
                 {song?.title}
             </div>
@@ -44,42 +53,48 @@ function SpecificSong() {
                 controls
                 />
                 </div>
-                <div className="edit-and-delete">
-                <EditFormModal />
-                <DeleteSongModal />
-                </div>
+            <div className="edit-and-delete">
+                    <div className="buttonArrangement">
+                        <div className="editButtonDiv">
+                            <EditFormModal />
+                        </div>
+                        <div className="deleteButtonDiv">
+                            <DeleteSongModal />
+                        </div>
+                    </div>
             </div>
-            <div className="commentsContainer">
-                <div className="commentContainer">
-                    <CommentPost/>
-                    {comments?.map(comment => {
-                        return (  
-                            <>
-                            {songId == comment.songId ?
-                                <div className='specificComment'>
-                                    
-                                      <>
-                                        <div className="commentUsername">
-                                            {sessionUser?.username}
+            </div>
+                    <div className="commentsContainer">
+                        <div className="commentContainer">
+                            <CommentPost/>
+                            {comments?.map(comment => {
+                                return (  
+                                    <>
+                                    {songId == comment?.songId ?
+                                        <div className='specificComment'>
                                             
-                                            {sessionUser.id == comment.userId ? 
-                                                <>
-                                                    <button type='button'>Edit</button>
-                                                    <button type='button'>Delete</button> 
+                                            <>
+                                                <div className="commentUsername">
+                                                    {sessionUser?.username}
+                                                    
+                                                    {sessionUser?.id == comment.userId ? 
+                                                        <>
+                                                            <button type='button'>Edit</button>
+                                                            <Link to={`/songs/${songId}`} onClick={() => handleCommentDelete(comment.id)}>Delete</Link>
 
-                                                </> : null}
-                                            
-                                        </div>
-                                        <div className="commentBody">
-                                            {comment?.body}
-                                        </div> 
-                                        </> 
-                                </div> : null }
-                            </>
-                    )})}   
+                                                        </> : null}
+                                                    
+                                                </div>
+                                                <div className="commentBody">
+                                                    {comment.body}
+                                                </div> 
+                                                </> 
+                                        </div> : null }
+                                    </>
+                            )})}   
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
     )
 }
 

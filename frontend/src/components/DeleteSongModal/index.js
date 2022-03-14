@@ -7,7 +7,7 @@ function DeleteSongModal() {
 
     return (
         <>
-          <button onClick={() => setShowModal(true)}>Delete Track</button>
+          <button onClick={() => setShowModal(true)} className='deleteTrackButton'>Delete Track</button>
           {showModal && (
             <Modal onClose={() => setShowModal(false)}>
               <DeleteForm />

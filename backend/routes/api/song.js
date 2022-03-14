@@ -9,7 +9,7 @@ router.get("/", asyncHandler(async(req, res) => {
     console.log('IN THE DB');
     const songs = await Song.findAll({ 
         include: {
-            model: User     
+            model: Comment     
         }
     });
     return res.json(songs);
@@ -45,7 +45,7 @@ router.delete("/delete/:id", asyncHandler(async(req, res) => {
     // await comments.destroy();
     await song.destroy();
 
-    return res.json(song, comments)
+    return res.json(song)
 }))
 
 router.put('/edit/:id', asyncHandler(async(req, res) => {

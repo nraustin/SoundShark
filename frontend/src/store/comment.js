@@ -45,6 +45,18 @@ export const nowGetComments = (songId) => async dispatch => {
     }
 }
 
+export const nowDeleteComment = (id) => async dispatch => {
+    const res = await csrfFetch(`/api/comments/delete/${id}`, {
+        method: 'DELETE',
+        body: JSON.stringify({id})
+    })
+    if(res.ok){
+        const deletedComment = await res.json();
+        dispatch(delComment(deletedComment))
+        return deletedComment;
+    }
+}
+
 export const nowAddComment = (comment) => async dispatch => {
     const res = await csrfFetch('/api/comments', {
         method: "POST",
@@ -55,8 +67,22 @@ export const nowAddComment = (comment) => async dispatch => {
     })
     const newComment = await res.json()
     dispatch(addComment(newComment))
-    return newComment;
+    // return newComment;
 }
+
+export const nowEditComment = (comment) => async dispatch => {
+    const res = await csrfFetch(`/api/comments/${comment.songId}/${comment.id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(comment)
+    })
+
+    if (res.ok) {
+    const editedComment = await res.json()
+    dispatch(updateComment(editedComment))
+}}
 
 
 const initialState = {
@@ -71,9 +97,18 @@ const commentReducer = (state = initialState, action) => {
             action.comments?.forEach((comment) => (newState[comment.id] = comment));
             return newState
         case ADD_COMMENT:
-            newState = Object.assign({}, state);
-            newState.comment = action.comment;
+            // newState = Object.assign({}, state);
+            // newState.comment = action.comment;
+            // return newState
+            newState[action.comment?.id] = action.comment
             return newState
+        case DEL_COMMENT:
+            delete newState[action.comment?.id]
+            return newState
+        case EDIT_COMMENT:
+            newState[action.comment?.id] = action.comment
+            return newState
+
     default:
         return state;
     }

@@ -1,0 +1,20 @@
+.addCommentButtonContainer{
+    padding: 5px;
+    display: flex;
+    justify-content: right;
+}
+
+.addCommentButton{
+    border: none;
+    background-color: green;
+    color: silver;
+    border-radius: 3px 3px 3px 3px;
+    font-family: 'Exo';
+    font-weight: bold;
+}
+
+.addCommentButton:hover {
+    cursor: pointer;
+    background-color: springgreen;
+    color: green;
+}

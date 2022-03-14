@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import * as songActions from '../../store/song'
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, useParams } from 'react-router-dom';
+import { Redirect, useParams, Link, useHistory } from 'react-router-dom';
 
 function DeleteForm({songParent}) {
+
     const dispatch = useDispatch();
+    const history = useHistory()
     
     const { songId } = useParams();
 
@@ -19,15 +21,16 @@ function DeleteForm({songParent}) {
 
 
     const handleDelete = async (e) => {
+        e.preventDefault();
         dispatch(songActions.deleteSong(songId))
+        // history.push(`/songs`)
     }
+    
 
 
     return (
         <div>
-            <button onClick={handleDelete}>
-                Delete Track
-            </button>
+            <button to='/songs' onClick={handleDelete} type='submit' className='deleteTrackModalButton'>Delete Track</button>
         </div>
       )
     }

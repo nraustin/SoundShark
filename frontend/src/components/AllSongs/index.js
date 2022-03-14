@@ -11,12 +11,13 @@ function SongList() {
     const dispatch = useDispatch()
     const { songId } = useParams();
 
-    const songs = useSelector(state => {
-        console.log(state.song.payload)
+    const songsObj = useSelector(state => {
+        console.log(state.song)
         return state.song.payload
-        
         // .map(songId => state.song[songId])
       });
+    
+    const songs = Object.values(songsObj)
 
     useEffect(() => {
         (dispatch(songActions.getAllSongs()))

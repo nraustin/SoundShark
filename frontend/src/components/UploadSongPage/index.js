@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { NavLink, Redirect, Link } from "react-router-dom";
 import * as songActions from "../../store/song";
 
 import AudioPlayer from 'react-h5-audio-player';
@@ -38,35 +38,36 @@ function UploadSong() {
     )
 
     return (
-        <form onSubmit={handleSubmit}>
-        <label>
-            Track Title
-            <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-            />
-        </label>
-        <label>
-            Track URL
-            <input
-            type="text"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
-            required
-            />
-        </label>
-        <label>
-            Add to Playlist?
-            <input
-            type="password"
-            value={playlist}
-            onChange={(e) => setPlaylist(e.target.value)}
-            />
-        </label>
-        <button type="submit">Upload Track</button>
-        </form>
+        <div className="uploadSongContainer">
+            <form onSubmit={handleSubmit} className="trackSubmitForm">
+            <div className="titleInput">
+                    <label>
+                    Track Title
+                    </label>
+                    <input
+                    type="text"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                    required
+                    />
+            </div>
+            <div className="urlInput">
+                    <label>
+                    Track URL
+                    </label>
+                    <input
+                    type="text"
+                    value={url}
+                    onChange={(e) => setUrl(e.target.value)}
+                    required
+                    />
+                
+            </div>
+            <div className="buttonContainer">
+            <button to='/songs' className='uploadSongButton' type="submit">UPLOAD TRACK</button>
+            </div>
+            </form>
+        </div>
     )
 
 }

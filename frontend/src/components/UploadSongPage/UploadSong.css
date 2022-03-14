@@ -1,0 +1,61 @@
+.uploadSongContainer{
+    padding-top: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.titleInput{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: silver;
+    font-family: 'Alatsi';
+}
+
+.urlInput{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-top: 20px;
+    color:silver;
+    font-family: 'Alatsi';
+}
+
+label {
+    padding-bottom: 10px;
+}
+
+.trackSubmitForm{
+    box-shadow: 2px 2px 2px 2px black;
+    padding: 20px;
+}
+
+input {
+    border-radius: 10px 10px 10px 10px;
+    background-color: black;
+    border: silver solid 2px;
+    color: white;
+    height: 20px;
+    width: 200px;
+}
+
+.buttonContainer{
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.uploadSongButton {
+    border: none;
+    background-color: green;
+    color: silver;
+    border-radius: 3px 3px 3px 3px;
+    font-family: 'Exo';
+    font-weight: bold;
+}
+
+.uploadSongButton:hover {
+    cursor: pointer;
+    background-color: springgreen;
+    color: green;
+}
