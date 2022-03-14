@@ -16,13 +16,8 @@ const commentValidator = [
 ]
 
 router.get("/:songId", asyncHandler(async(req, res) => {
-    console.log('IN THE COMMENTS DB');
-    // const id = req.params
     const songId = parseInt(req.params.songId, 10)
     const comments = await Comment.findAll({ 
-        // include: {
-        //     model: User
-        // },
         where: {
             songId: songId
         }
@@ -33,8 +28,6 @@ router.get("/:songId", asyncHandler(async(req, res) => {
 }))
 
 router.post("/", asyncHandler(async(req, res) => {
-    console.log('-----------here----------')
-    console.log(req.body)
     const comment = await Comment.create(req.body)
 
     return res.json(comment);

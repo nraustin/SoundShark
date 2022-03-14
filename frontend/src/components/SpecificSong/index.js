@@ -6,7 +6,6 @@ import DeleteSongModal from "../DeleteSongModal"
 import CommentPost from '../PostComment'
 import EditComment from '../EditComment'
 import ReactAudioPlayer from 'react-audio-player';
-import Waveform from "../WaveFormerC";
 
 import * as songActions from '../../store/song'
 import * as commentActions from '../../store/comment'
@@ -30,11 +29,6 @@ function SpecificSong() {
 
     const users = Object.values(userObject)
     const comments = Object.values(commentObject)
-
-    console.log(commentObject)
-    console.log(comments)
-    console.log(users)
-    console.log(sessionUser)
 
       useEffect(() => {
         dispatch(songActions.getOneSong(songId))

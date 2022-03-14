@@ -6,7 +6,6 @@ const { User, Song, Comment } = require("../../db/models");
 const comment = require('../../db/models/comment');
 
 router.get("/", asyncHandler(async(req, res) => {
-    console.log('IN THE DB');
     const songs = await Song.findAll({ 
         include: {
             model: Comment     
@@ -30,17 +29,7 @@ router.post("/upload", asyncHandler(async(req, res) => {
 
 router.delete("/delete/:id", asyncHandler(async(req, res) => {
     const { id } = req.params;
-    console.log('----about-to-delete----')
     const song = await Song.findByPk(id)
-
-    // const comments = await Comment.findAll({
-    //         where: { 
-    //             id: song
-    //     },
-    //     include: {
-    //         model: User
-    //     }})
-    // await comments.destroy();
     await song.destroy();
 
     return res.json(song)
@@ -49,7 +38,6 @@ router.delete("/delete/:id", asyncHandler(async(req, res) => {
 router.put('/edit/:id', asyncHandler(async(req, res) => {
     const { id } = req.params;
     const { userId, newTitle, newUrl } = req.body;
-    console.log(req.body)
 
     const thatSong = await Song.findByPk(id, {
         include: {
@@ -61,22 +49,12 @@ router.put('/edit/:id', asyncHandler(async(req, res) => {
 }))
 
 router.get('/:id', asyncHandler(async(req, res) => {
-    console.log('----hit----')
     const id = +req.params.id;
     const song = await Song.findByPk(id, {
         include: {
             model: User
         }
     })
-    // })
-    // const comments = await Comment.findAll({
-    //     where: { 
-    //         songId: id
-    // },
-    // include: {
-    //     model: User
-    // }})
-    // console.log('comments', comments)
     res.json(song)
 }))
 

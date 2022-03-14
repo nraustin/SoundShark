@@ -15,7 +15,6 @@ function EditComment({commentS}) {
     })
 
     const comment = useSelector(state => state.comment);
-    console.log(commentId);
 
     const [newBody, setNewBody] = useState(comment[commentId]);
 
@@ -26,7 +25,6 @@ function EditComment({commentS}) {
 
     const handleEditComment = async (e) => {
         e.preventDefault();
-        console.log('HOWDY')
         const editedComment = {id: commentId, userId: sessionUser.id, songId: song[songId].id, body: comment ? newBody : null}
 
         return dispatch(commentActions.nowEditComment(editedComment))

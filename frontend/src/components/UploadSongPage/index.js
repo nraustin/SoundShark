@@ -31,15 +31,6 @@ function UploadSong() {
       };
 
 
-    const Player = () => (
-        <AudioPlayer
-          autoPlay
-          src="http://example.com/audio.mp3"
-          onPlay={e => console.log("onPlay")}
-          // other props here
-        />
-    )
-
     return (
         <div className="uploadSongContainer">
             <form onSubmit={handleSubmit} className="trackSubmitForm">

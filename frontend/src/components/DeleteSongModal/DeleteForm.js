@@ -12,12 +12,8 @@ function DeleteForm({songParent}) {
     const { songId } = useParams();
 
     const song = useSelector(state => {
-        console.log(state.song)
         return state.song[songId]
     })
-    console.log(song)
-
-    console.log(songId)
 
 
     const handleDelete = async (e) => {

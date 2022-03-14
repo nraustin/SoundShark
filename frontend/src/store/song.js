@@ -44,31 +44,22 @@ const changeSong = (song) => {
 }
 
 export const getAllSongs = () => async dispatch => {
-    console.log('HERE')
     const res = await csrfFetch(`/api/songs`)
     if(res.ok) {
         const data = await res.json();
         dispatch(getSongs(data));
         return data;
     }
-    // .then(response => response.json())
-    // .then(songs => {
-    //     console.log('payload', songs)
-    //     dispatch(getSongs(songs))
-    // })
+
 }
 
 export const getOneSong = id => async dispatch => {
-    console.log('IM HERE')
     const res = await csrfFetch(`/api/songs/${id}`)
     if (res.ok) {
         const song = await res.json();
         dispatch(getSong(song));
       }
-    // .then(response => response.json())
-    // .then(song => {
-    //     dispatch(getSong(song))
-    // })
+
 }
 
 export const uploadSong = (song) => async (dispatch) => {
@@ -83,7 +74,6 @@ export const uploadSong = (song) => async (dispatch) => {
     })
     .then(response => response.json())
     .then(song => {
-        console.log('song', song)
         dispatch(newSong(song))
         return song;
     })
@@ -108,7 +98,6 @@ export const editSong = song => async (dispatch) => {
 
 
 export const deleteSong = id => async dispatch => {
-    console.log('----hit-----')
     const res = await csrfFetch(`/api/songs/delete/${id}`, {
         method: 'DELETE',
         body: JSON.stringify({id})

@@ -12,11 +12,8 @@ function SongList() {
     const { songId } = useParams();
 
     const songsObj = useSelector(state => {
-        console.log(state.song)
         return state.song
-        // .map(songId => state.song[songId])
       });
-    console.log(songsObj);
     const songs = Object.values(songsObj)
 
     useEffect(() => {
@@ -28,7 +25,6 @@ function SongList() {
         <>
         <div className='songsContainer'>
                 {songs?.map(song => {
-                    console.log(song);
                     return (
                         <NavLink key={song.id} to={`/songs/${song.id}`} className='songContainer'>
                             <div className="image-and-title">

@@ -10,13 +10,12 @@ function EditForm({close}) {
     const history = useHistory();
 
     const song = useSelector(state => {
-        console.log(state.song)
         return state.song[songId]
     })
 
     const [newUrl, setNewUrl] = useState(song.url);
     const [newTitle, setNewTitle] = useState(song.title)
-    console.log(song.title)
+
 
     const sessionUser = useSelector(state => state.session.user)
     const userId = sessionUser.id
@@ -26,7 +25,6 @@ function EditForm({close}) {
     const handleEdit = async (e) => {
         e.preventDefault();
         const newSong = { newUrl, newTitle, userId, songId }
-        console.log(newSong)
 
         let res = dispatch(songActions.editSong(newSong))
         close();
