@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, Redirect, Link } from "react-router-dom";
+import { NavLink, Redirect, Link, useHistory } from "react-router-dom";
 import * as songActions from "../../store/song";
 
 import AudioPlayer from 'react-h5-audio-player';
@@ -12,6 +12,7 @@ import "./UploadSong.css"
 function UploadSong() {
 
     const dispatch = useDispatch();
+    const history = useHistory();
     const sessionUser = useSelector((state) => state.session.user);
     const [title, setTitle] = useState('');
     const [url, setUrl] = useState('');
@@ -24,7 +25,9 @@ function UploadSong() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        return dispatch(songActions.uploadSong({ userId, title, url }))
+        let dispatched = dispatch(songActions.uploadSong({ userId, title, url }))
+
+        if(dispatched) history.push('/songs')
       };
 
 

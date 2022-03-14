@@ -16,12 +16,12 @@ function SongList() {
         return state.song.payload
         // .map(songId => state.song[songId])
       });
-    
+    console.log(songsObj);
     const songs = Object.values(songsObj)
 
     useEffect(() => {
         (dispatch(songActions.getAllSongs()))
-    }, [dispatch])
+    }, [dispatch, songsObj[songId]])
 
 
     return (

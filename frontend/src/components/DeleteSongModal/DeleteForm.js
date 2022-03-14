@@ -21,9 +21,9 @@ function DeleteForm({songParent}) {
 
 
     const handleDelete = async (e) => {
-        e.preventDefault();
-        dispatch(songActions.deleteSong(songId))
-        // history.push(`/songs`)
+        let dispatched = dispatch(songActions.deleteSong(songId))
+
+        if(dispatched) history.push(`/songs`)
     }
     
 

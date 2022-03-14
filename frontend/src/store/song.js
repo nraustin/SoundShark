@@ -112,6 +112,7 @@ export const deleteSong = id => async dispatch => {
     if(res.ok){
         const songGone = await res.json();
         dispatch(delSong(songGone))
+        return songGone;
     }
 }
 const initialState = {
@@ -148,6 +149,7 @@ const songReducer = (state = initialState, action) => {
             newState.song = action.song;
             return newState;
         case DEL_SONG:
+            // newState = {...state}
             delete newState[action.song.id]
             return newState
         default:

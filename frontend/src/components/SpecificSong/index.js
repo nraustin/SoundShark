@@ -31,7 +31,7 @@ function SpecificSong() {
       useEffect(() => {
         dispatch(songActions.getOneSong(songId))
         dispatch(commentActions.nowGetComments(songId))
-      }, [dispatch, songId])
+      }, [dispatch, song])
 
       const handleCommentDelete = async(id) => {
         let res = dispatch(commentActions.nowDeleteComment(id))
