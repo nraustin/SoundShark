@@ -8,7 +8,7 @@ import ReactAudioPlayer from 'react-audio-player';
 
 import * as songActions from '../../store/song'
 import * as commentActions from '../../store/comment'
-import * as userActions from '../../store/session'
+import * as userActions from '../../store/user'
 
 
 import './SpecificSong.css'
@@ -22,23 +22,36 @@ function SpecificSong() {
     const song = useSelector((state) => state.song[songId])
     const commentObject = useSelector((state) => state.comment)
     const sessionUser = useSelector(state => state.session.user);
+    const userObject = useSelector((state) => state.userST)
+
+    const users = Object.values(userObject)
     const comments = Object.values(commentObject)
 
     console.log(commentObject)
     console.log(comments)
+    console.log(users)
     console.log(sessionUser)
 
       useEffect(() => {
         dispatch(songActions.getOneSong(songId))
         dispatch(commentActions.nowGetComments(songId))
+        dispatch(userActions.getUsers())
       }, [dispatch, songId])
 
       const handleCommentDelete = async(id) => {
         let res = dispatch(commentActions.nowDeleteComment(id))
 
-        // if (res) {
-        //     history.push(`/songs/${songId}`)
-        // }
+        if (res) {
+            history.push(`/songs/${songId}`)
+        }
+     }
+
+     const getUsernames = (userId) => {
+        const username = users.find(user => (
+            user.id === userId
+        ))
+
+        return username?.username
      }
      
     return(
@@ -54,6 +67,7 @@ function SpecificSong() {
                 />
                 </div>
             <div className="edit-and-delete">
+                {sessionUser.id == song?.userId ?
                     <div className="buttonArrangement">
                         <div className="editButtonDiv">
                             <EditFormModal />
@@ -61,7 +75,7 @@ function SpecificSong() {
                         <div className="deleteButtonDiv">
                             <DeleteSongModal />
                         </div>
-                    </div>
+                    </div> : null}
             </div>
             </div>
                     <div className="commentsContainer">
@@ -75,12 +89,12 @@ function SpecificSong() {
                                             
                                             <>
                                                 <div className="commentUsername">
-                                                    {sessionUser?.username}
+                                                    {getUsernames(comment?.userId)}
                                                     
                                                     {sessionUser?.id == comment.userId ? 
                                                         <>
                                                             <button type='button'>Edit</button>
-                                                            <Link to={`/songs/${songId}`} onClick={() => handleCommentDelete(comment.id)}>Delete</Link>
+                                                            <button onClick={() => handleCommentDelete(comment.id)} className="deleteComment">Delete</button>
 
                                                         </> : null}
                                                     

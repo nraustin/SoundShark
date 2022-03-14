@@ -91,21 +91,25 @@ const initialState = {
 
 
 const commentReducer = (state = initialState, action) => {
-    let newState = {...state};
+    let newState;
     switch (action.type) {
         case GET_COMMENTS:
+            newState = {...state};
             action.comments?.forEach((comment) => (newState[comment.id] = comment));
             return newState
         case ADD_COMMENT:
             // newState = Object.assign({}, state);
             // newState.comment = action.comment;
             // return newState
+            newState = {...state};
             newState[action.comment?.id] = action.comment
             return newState
         case DEL_COMMENT:
+            newState = {...state};
             delete newState[action.comment?.id]
             return newState
         case EDIT_COMMENT:
+            newState = {...state};
             newState[action.comment?.id] = action.comment
             return newState
 

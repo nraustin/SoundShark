@@ -1,16 +1,19 @@
+import { useReducer } from 'react';
 import { createPortal } from 'react-dom';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import commentReducer from './comment';
 import sessionReducer from './session';
 import songReducer from './song';
+import userReducer from './user';
 
 
 
 const rootReducer = combineReducers({
     session: sessionReducer,
     song: songReducer,
-    comment: commentReducer
+    comment: commentReducer,
+    userST: userReducer
   });
 
 
